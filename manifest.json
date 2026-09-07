@@ -294,11 +294,6 @@
    "imageUrl": "https://raw.githubusercontent.com/erdosmiller/blog/master/absolute_time_in_labview/doc/images/snippet_example.png"
   },
   {
-   "file": "frc-docs/game-data-code-2026.png",
-   "pageUrl": "https://frcdocs.wpi.edu/en/stable/docs/yearly-overview/2020-Game-Data.html",
-   "imageUrl": "https://raw.githubusercontent.com/wpilibsuite/frc-docs/stable/source/docs/yearly-overview/images/2020-Game-Data/labview-game-data-code2026.png"
-  },
-  {
    "file": "frc-docs/game-data-code.png",
    "pageUrl": "https://frcdocs.wpi.edu/en/2022/docs/yearly-overview/2020-Game-Data.html",
    "imageUrl": "https://raw.githubusercontent.com/wpilibsuite/frc-docs/2022/source/docs/yearly-overview/images/2020-Game-Data/labview-game-data-code.png"
@@ -2617,14 +2612,6 @@
    "license": "CC BY-SA 3.0"
   },
   {
-   "file": "stackoverflow/16342924_H0Flz.png",
-   "pageUrl": "https://stackoverflow.com/questions/16342924/reduce-array-resolution-in-labview",
-   "imageUrl": "https://i.sstatic.net/H0Flz.png",
-   "author": "Rice_Crisp",
-   "authorLink": "https://stackoverflow.com/users/1229571/rice-crisp",
-   "license": "CC BY-SA 3.0"
-  },
-  {
    "file": "stackoverflow/16347228_ATJUN.png",
    "pageUrl": "https://stackoverflow.com/questions/16342924/reduce-array-resolution-in-labview/16347228#16347228",
    "imageUrl": "https://i.sstatic.net/ATJUN.png",
@@ -3433,14 +3420,6 @@
    "license": "CC BY-SA 3.0"
   },
   {
-   "file": "stackoverflow/42972826_kqyrz.png",
-   "pageUrl": "https://stackoverflow.com/questions/42045635/labview-simple-counter/42972826#42972826",
-   "imageUrl": "https://i.sstatic.net/kqyrz.png",
-   "author": "lakshmi",
-   "authorLink": "https://stackoverflow.com/users/7756147/lakshmi",
-   "license": "CC BY-SA 3.0"
-  },
-  {
    "file": "stackoverflow/43292939_cDHQF.png",
    "pageUrl": "https://stackoverflow.com/questions/42968371/how-can-i-create-vi-for-creating-star-pattern-programs-in-labview-which-we-can-d/43292939#43292939",
    "imageUrl": "https://i.sstatic.net/cDHQF.png",
@@ -4198,14 +4177,6 @@
    "imageUrl": "https://i.sstatic.net/R4oLt.png",
    "author": "Mohamed Azad",
    "authorLink": "https://stackoverflow.com/users/12748735/mohamed-azad",
-   "license": "CC BY-SA 4.0"
-  },
-  {
-   "file": "stackoverflow/62609290_qf4mZ.png",
-   "pageUrl": "https://stackoverflow.com/questions/62609290/integrating-vis-in-labview",
-   "imageUrl": "https://i.sstatic.net/qf4mZ.png",
-   "author": "Aastha Luhadia",
-   "authorLink": "https://stackoverflow.com/users/13248892/aastha-luhadia",
    "license": "CC BY-SA 4.0"
   },
   {

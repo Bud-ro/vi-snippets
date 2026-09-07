@@ -61,10 +61,10 @@
      object class bdNodeEb; front-panel object rareC8; front-panel object rareStructureC3; undecoded object class 0xec
  27. stackoverflow/73098534_B9NNM.png  (LabVIEW 20.0.1, 143 nodes)
      object class bdInPlaceStructure; object class bdNode172; PNG image data in the DSIM section; undecoded object class 0x183
- 28. erdos-miller/3_data_write.png  (LabVIEW 15.0, 111 nodes)
-     object class constantC2; object class numericControlVariant; front-panel object constantC2; undecoded object class 0x35
- 29. stackoverflow/65218054_LYXa7.png  (LabVIEW 15.0.1, 54 nodes)
+ 28. stackoverflow/65218054_LYXa7.png  (LabVIEW 15.0.1, 54 nodes)
      object class bdNode3e; primitive Less Than 0?; primitive Match Pattern; undecoded object class 0x176
+ 29. erdos-miller/3_data_write.png  (LabVIEW 15.0, 111 nodes)
+     object class constantC2; object class numericControlVariant; front-panel object constantC2; undecoded object class 0x35
  30. ni-kb/Programmatically_Change_Font_Color_or_Size_of_String_Subset_in_LabVIEW.png  (LabVIEW 16.0, 69 nodes)
      three or more font styles; styled font entries (bold/italic/underline) in the font table; object class controlRare56; undecoded object class 0x14b
  31. ni-kb/How_to_Programmatically_Acquire_a_Full_Screenshot_in_LabVIEW_2.png  (LabVIEW 17.0, 30 nodes)
@@ -88,7 +88,7 @@
  40. stackoverflow/57898106_DbvGc.png  (LabVIEW 18.0.1, 76 nodes)
      help text; object class tipStrip; resource block VITS; undecoded object class 0x12a
  41. ni-kb/Programmatically_Create_a_LabVIEW_Palette_2.png  (LabVIEW 24.3.1, 272 nodes)
-     LabVIEW 24.x; bold labels; primitive VI Library; undecoded object class 0x5f
+     LabVIEW 24.x; primitive VI Library; bold labels; undecoded object class 0x5f
  42. ni-kb/Accessing_Shared_Variables_From_a_LabVIEW_Web_Service_2.png  (LabVIEW 22.3.1, 7 nodes)
      LabVIEW 22.x; front-panel object controlTerminal10c; PNG in the MNGI section; undecoded object class 0x148
  43. stackoverflow/3867000_xXajQ.png  (LabVIEW 8.0, 2 nodes)
@@ -172,7 +172,7 @@
  82. ni-kb/Different_Methods_for_Representing_Data_on_an_XY_Graph_3.png  (LabVIEW 13.0.1, 100 nodes)
      object class bdNode34; LabVIEW 13.x; primitive Less?; undecoded object class 0x3c
  83. stackoverflow/33862024_ctBR2.png  (LabVIEW 15.0, 36 nodes)
-     object class bdNode103; object class bdNodeA9; PNG in the MNGI section; undecoded object class 0xf4
+     object class bdNode103; object class bdNodeA9; primitive Unregister For Events; undecoded object class 0xf4
  84. stackoverflow/55101960_vZSSg.png  (LabVIEW 13.0.1, 158 nodes)
      object class bdNode114; LabVIEW 13.x; primitive Empty Array?; undecoded object class 0x176
  85. stackoverflow/63563672_xnSkj.png  (LabVIEW 19.0.1, 98 nodes)
@@ -182,7 +182,7 @@
  87. stackoverflow/65297383_1zwLL.png  (LabVIEW 20.0, 114 nodes)
      object class constantC2; object class numericControlVariant; LabVIEW 20.x; undecoded object class 0x183
  88. ni-kb/Programmatically_Create_a_LabVIEW_Palette.png  (LabVIEW 24.3.1, 256 nodes)
-     LabVIEW 24.x; bold labels; primitive VI Library; undecoded object class 0x5f
+     LabVIEW 24.x; primitive VI Library; bold labels; undecoded object class 0x5f
  89. stackoverflow/34506335_lvDN0.png  (LabVIEW 14.0, 44 nodes)
      object class controlRare56; front-panel object controlRare56; LabVIEW 14.x; undecoded object class 0x62
  90. ni-kb/Using_a_PXIe_634x_Card_to_Define_All_PXI_TRIG_Lines_in_LabVIEW.png  (LabVIEW 20.0, 84 nodes)

@@ -30606,5 +30606,29 @@
   "reason": "NI documentation image; no reuse note recoverable (archived without its page)",
   "pageUrl": "http://web.archive.org/web/20240923035455id_/https://zone.ni.com/cms/images/devzone/pub/gsbrcith6525921358408952469.png",
   "imageUrl": "https://zone.ni.com/cms/images/devzone/pub/gsbrcith6525921358408952469.png"
+ },
+ {
+  "source": "FIRST Robotics Competition documentation (WPI)",
+  "reason": "saved by a LabVIEW evaluation license: the image carries the \"LabVIEW Evaluation Software\" watermark and NI logo",
+  "pageUrl": "https://frcdocs.wpi.edu/en/stable/docs/yearly-overview/2020-Game-Data.html",
+  "imageUrl": "https://raw.githubusercontent.com/wpilibsuite/frc-docs/stable/source/docs/yearly-overview/images/2020-Game-Data/labview-game-data-code2026.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved by a LabVIEW evaluation license: the image carries the \"LabVIEW Evaluation Software\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/16342924/reduce-array-resolution-in-labview",
+  "imageUrl": "https://i.sstatic.net/H0Flz.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved by a LabVIEW evaluation license: the image carries the \"LabVIEW Evaluation Software\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/42045635/labview-simple-counter/42972826#42972826",
+  "imageUrl": "https://i.sstatic.net/kqyrz.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved by a LabVIEW evaluation license: the image carries the \"LabVIEW Evaluation Software\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/62609290/integrating-vis-in-labview",
+  "imageUrl": "https://i.sstatic.net/qf4mZ.png"
  }
 ]
