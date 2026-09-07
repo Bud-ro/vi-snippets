@@ -22,6 +22,12 @@ sources with an explicit license or an explicit reuse grant are included.
 | `frc-docs` | 3 | FIRST Robotics Competition documentation (WPI) | CC BY 4.0 |
 | `wikimedia-commons` | 1 | Wikimedia Commons | CC BY-SA 4.0 |
 
+`INTERESTING.txt` points readers at the 100 snippets that together cover the
+widest range of LabVIEW features (unusual structures and object classes,
+embedded pictures, styled text, rare data types, old and new versions), ranked
+by feature rarity with a diversity penalty; the reasons name what each one
+demonstrates.
+
 `held.json` lists snippet images that were found and verified but are not
 included because their source states no reuse license or forbids copying
 (NI knowledge-base articles without the reuse note, NI forum attachments, and
