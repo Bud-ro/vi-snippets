@@ -26,6 +26,14 @@ came from. The sources and the basis on which each is redistributed:
   Commons Attribution 4.0 International
   (https://creativecommons.org/licenses/by/4.0/). © WPI and the FRC docs
   contributors, https://github.com/wpilibsuite/frc-docs.
+- **Stack Overflow** (`stackoverflow`): user contributions licensed under
+  Creative Commons Attribution-ShareAlike, version 2.5, 3.0 or 4.0 by
+  contribution date (https://stackoverflow.com/help/licensing). The manifest
+  records, per file, the license version, the author's display name and
+  profile link, and the post link.
+- **Developpez.net** (`developpez`): the forum pages state "Les sources
+  présentées sur cette page sont libres de droits et vous pouvez les utiliser
+  à votre convenance". © the respective authors and Developpez.com.
 - **Wikimedia Commons** (`wikimedia-commons`): Creative Commons
   Attribution-ShareAlike 4.0 International, uploader's own work; see the file
   page linked in the manifest for the author.
