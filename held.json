@@ -30630,5 +30630,65 @@
   "reason": "saved by a LabVIEW evaluation license: the image carries the \"LabVIEW Evaluation Software\" watermark and NI logo",
   "pageUrl": "https://stackoverflow.com/questions/62609290/integrating-vis-in-labview",
   "imageUrl": "https://i.sstatic.net/qf4mZ.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/25772310/executing-case-structure-once-in-while-loop-labview",
+  "imageUrl": "https://i.sstatic.net/GqWWr.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/25793239/boolean-blinking-led-for-labview",
+  "imageUrl": "https://i.sstatic.net/RnhZN.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/25835168/continuously-numbers-insert-to-array-labview",
+  "imageUrl": "https://i.sstatic.net/902X7.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/25821062/fast-fourier-transform-of-frequency-analysis-in-labview/25854851#25854851",
+  "imageUrl": "https://i.sstatic.net/Yr5FP.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/41500523/labview-1d-array-sorting-after-removing-minus-numbers-and-duplicates/41602853#41602853",
+  "imageUrl": "https://i.sstatic.net/ULjBA.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/41920175/labview-how-to-use-shift-register-with-case-structure/41921877#41921877",
+  "imageUrl": "https://i.sstatic.net/ehY1o.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/41866660/how-to-edit-and-receive-data-from-crio/41989685#41989685",
+  "imageUrl": "https://i.sstatic.net/bGeSH.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/42342770/how-to-set-two-identical-y-scales-in-the-same-graph-in-labview/42401972#42401972",
+  "imageUrl": "https://i.sstatic.net/Z1SeC.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/49819376/bitwise-negation-up-to-the-first-positive-bit/49915499#49915499",
+  "imageUrl": "https://i.sstatic.net/C3eVE.png"
+ },
+ {
+  "source": "Stack Overflow",
+  "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
+  "pageUrl": "https://stackoverflow.com/questions/50038060/labview-how-to-copy-from-one-array-to-another-array/50262836#50262836",
+  "imageUrl": "https://i.sstatic.net/NeScS.png"
  }
 ]

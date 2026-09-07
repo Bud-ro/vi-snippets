@@ -2828,38 +2828,6 @@
    "license": "CC BY-SA 3.0"
   },
   {
-   "file": "stackoverflow/25772310_GqWWr.png",
-   "pageUrl": "https://stackoverflow.com/questions/25772310/executing-case-structure-once-in-while-loop-labview",
-   "imageUrl": "https://i.sstatic.net/GqWWr.png",
-   "author": "Royal DeviLz",
-   "authorLink": "https://stackoverflow.com/users/4021663/royal-devilz",
-   "license": "CC BY-SA 3.0"
-  },
-  {
-   "file": "stackoverflow/25793239_RnhZN.png",
-   "pageUrl": "https://stackoverflow.com/questions/25793239/boolean-blinking-led-for-labview",
-   "imageUrl": "https://i.sstatic.net/RnhZN.png",
-   "author": "Royal DeviLz",
-   "authorLink": "https://stackoverflow.com/users/4021663/royal-devilz",
-   "license": "CC BY-SA 3.0"
-  },
-  {
-   "file": "stackoverflow/25835168_902X7.png",
-   "pageUrl": "https://stackoverflow.com/questions/25835168/continuously-numbers-insert-to-array-labview",
-   "imageUrl": "https://i.sstatic.net/902X7.png",
-   "author": "Royal DeviLz",
-   "authorLink": "https://stackoverflow.com/users/4021663/royal-devilz",
-   "license": "CC BY-SA 3.0"
-  },
-  {
-   "file": "stackoverflow/25854851_Yr5FP.png",
-   "pageUrl": "https://stackoverflow.com/questions/25821062/fast-fourier-transform-of-frequency-analysis-in-labview/25854851#25854851",
-   "imageUrl": "https://i.sstatic.net/Yr5FP.png",
-   "author": "Royal DeviLz",
-   "authorLink": "https://stackoverflow.com/users/4021663/royal-devilz",
-   "license": "CC BY-SA 3.0"
-  },
-  {
    "file": "stackoverflow/26103724_Lk2H5.png",
    "pageUrl": "https://stackoverflow.com/questions/25853170/display-multiple-data-and-timestamp-overtime-in-rows-labview/26103724#26103724",
    "imageUrl": "https://i.sstatic.net/Lk2H5.png",
@@ -3364,30 +3332,6 @@
    "license": "CC BY-SA 3.0"
   },
   {
-   "file": "stackoverflow/41602853_ULjBA.png",
-   "pageUrl": "https://stackoverflow.com/questions/41500523/labview-1d-array-sorting-after-removing-minus-numbers-and-duplicates/41602853#41602853",
-   "imageUrl": "https://i.sstatic.net/ULjBA.png",
-   "author": "nekomatic",
-   "authorLink": "https://stackoverflow.com/users/24447/nekomatic",
-   "license": "CC BY-SA 3.0"
-  },
-  {
-   "file": "stackoverflow/41921877_ehY1o.png",
-   "pageUrl": "https://stackoverflow.com/questions/41920175/labview-how-to-use-shift-register-with-case-structure/41921877#41921877",
-   "imageUrl": "https://i.sstatic.net/ehY1o.png",
-   "author": "nekomatic",
-   "authorLink": "https://stackoverflow.com/users/24447/nekomatic",
-   "license": "CC BY-SA 3.0"
-  },
-  {
-   "file": "stackoverflow/41989685_bGeSH.png",
-   "pageUrl": "https://stackoverflow.com/questions/41866660/how-to-edit-and-receive-data-from-crio/41989685#41989685",
-   "imageUrl": "https://i.sstatic.net/bGeSH.png",
-   "author": "nekomatic",
-   "authorLink": "https://stackoverflow.com/users/24447/nekomatic",
-   "license": "CC BY-SA 3.0"
-  },
-  {
    "file": "stackoverflow/42048253_DiRsZ.png",
    "pageUrl": "https://stackoverflow.com/questions/42045635/labview-simple-counter/42048253#42048253",
    "imageUrl": "https://i.sstatic.net/DiRsZ.png",
@@ -3401,14 +3345,6 @@
    "imageUrl": "https://i.sstatic.net/fqcSl.png",
    "author": "srm",
    "authorLink": "https://stackoverflow.com/users/1332468/srm",
-   "license": "CC BY-SA 3.0"
-  },
-  {
-   "file": "stackoverflow/42401972_Z1SeC.png",
-   "pageUrl": "https://stackoverflow.com/questions/42342770/how-to-set-two-identical-y-scales-in-the-same-graph-in-labview/42401972#42401972",
-   "imageUrl": "https://i.sstatic.net/Z1SeC.png",
-   "author": "nekomatic",
-   "authorLink": "https://stackoverflow.com/users/24447/nekomatic",
    "license": "CC BY-SA 3.0"
   },
   {
@@ -3748,28 +3684,12 @@
    "license": "CC BY-SA 3.0"
   },
   {
-   "file": "stackoverflow/49915499_C3eVE.png",
-   "pageUrl": "https://stackoverflow.com/questions/49819376/bitwise-negation-up-to-the-first-positive-bit/49915499#49915499",
-   "imageUrl": "https://i.sstatic.net/C3eVE.png",
-   "author": "nekomatic",
-   "authorLink": "https://stackoverflow.com/users/24447/nekomatic",
-   "license": "CC BY-SA 3.0"
-  },
-  {
    "file": "stackoverflow/50027657_C1jUs.png",
    "pageUrl": "https://stackoverflow.com/questions/49819376/bitwise-negation-up-to-the-first-positive-bit/50027657#50027657",
    "imageUrl": "https://i.sstatic.net/C1jUs.png",
    "author": "Matt",
    "authorLink": "https://stackoverflow.com/users/611562/matt",
    "license": "CC BY-SA 3.0"
-  },
-  {
-   "file": "stackoverflow/50262836_NeScS.png",
-   "pageUrl": "https://stackoverflow.com/questions/50038060/labview-how-to-copy-from-one-array-to-another-array/50262836#50262836",
-   "imageUrl": "https://i.sstatic.net/NeScS.png",
-   "author": "nekomatic",
-   "authorLink": "https://stackoverflow.com/users/24447/nekomatic",
-   "license": "CC BY-SA 4.0"
   },
   {
    "file": "stackoverflow/50573318_rh2rd.png",
