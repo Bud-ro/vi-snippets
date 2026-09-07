@@ -30690,5 +30690,12 @@
   "reason": "saved under a LabVIEW Home/Student edition: the image carries the \"LabVIEW Student Edition\" or \"Home and Student Edition\" watermark and NI logo",
   "pageUrl": "https://stackoverflow.com/questions/50038060/labview-how-to-copy-from-one-array-to-another-array/50262836#50262836",
   "imageUrl": "https://i.sstatic.net/NeScS.png"
+ },
+ {
+  "source": "LabVIEW Wiki",
+  "reason": "the image is not LabVIEW output: a photograph with a VI grafted into its niVI chunk as a demonstration",
+  "pageUrl": "https://labviewwiki.org/wiki/Snippet",
+  "imageUrl": "https://labviewwiki.org/w/images/3/37/MerrimanSnippet.png",
+  "uploader": "Tcplomp"
  }
 ]

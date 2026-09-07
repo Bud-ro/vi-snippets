@@ -14,7 +14,7 @@ sources with an explicit license or an explicit reuse grant are included.
 | directory | files | source | basis |
 |---|---|---|---|
 | `ni-kb` | 351 | NI Knowledge Base articles | NI's note on the figures that the image "includes LabVIEW code that you can reuse in your project" |
-| `labviewwiki` | 64 | LabVIEW Wiki | CC BY 3.0 |
+| `labviewwiki` | 63 | LabVIEW Wiki | CC BY 3.0 |
 | `stackoverflow` | 259 | Stack Overflow answers and questions | CC BY-SA 2.5/3.0/4.0, author and post recorded |
 | `developpez` | 33 | Developpez.net LabVIEW forum and blogs | code pages state the sources are free of rights |
 | `hampel-soft` | 21 | Hampel Software Engineering knowledge base | CC BY-SA 4.0 |
