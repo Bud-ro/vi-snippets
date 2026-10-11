@@ -15,11 +15,11 @@ sources with an explicit license or an explicit reuse grant are included.
 |---|---|---|---|
 | `ni-kb` | 351 | NI Knowledge Base articles | NI's note on the figures that the image "includes LabVIEW code that you can reuse in your project" |
 | `labviewwiki` | 63 | LabVIEW Wiki | CC BY 3.0 |
-| `stackoverflow` | 259 | Stack Overflow answers and questions | CC BY-SA 2.5/3.0/4.0, author and post recorded |
+| `stackoverflow` | 272 | Stack Overflow answers and questions | CC BY-SA 2.5/3.0/4.0, author and post recorded |
 | `developpez` | 33 | Developpez.net LabVIEW forum and blogs | code pages state the sources are free of rights |
 | `hampel-soft` | 21 | Hampel Software Engineering knowledge base | CC BY-SA 4.0 |
 | `erdos-miller` | 17 | Erdos Miller blog (assets in the MIT-licensed `erdosmiller/blog`) | MIT |
-| `frc-docs` | 2 | FIRST Robotics Competition documentation (WPI) | CC BY 4.0 |
+| `frc-docs` | 3 | FIRST Robotics Competition documentation (WPI) | CC BY 4.0 |
 | `wikimedia-commons` | 1 | Wikimedia Commons | CC BY-SA 4.0 |
 
 `INTERESTING.txt` points readers at the 100 snippets that together cover the
@@ -27,6 +27,11 @@ widest range of LabVIEW features (unusual structures and object classes,
 embedded pictures, styled text, rare data types, old and new versions), ranked
 by feature rarity with a diversity penalty; the reasons name what each one
 demonstrates.
+
+Images saved under an evaluation or Home/Student edition of LabVIEW (the
+"LabVIEW Evaluation Software" and "Student Edition" watermarks) are included;
+the VI inside records the edition in its save-record flags, and consumers that
+need an unwatermarked render reference filter on that.
 
 `held.json` lists snippet images that were found and verified but are not
 included because their source states no reuse license or forbids copying
