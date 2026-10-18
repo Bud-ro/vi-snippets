@@ -32,22 +32,31 @@ Future<void> main(List<String> args) async {
   final root = Directory(args[0]).absolute;
   final out = File(args[1]).absolute;
   final watch = Stopwatch()..start();
-  final records = await _records(root);
-  final labwright = _labwrightRef();
-  _write(
+  final writer = _Writer(
     out,
-    records,
     repository: root.uri.pathSegments.where((s) => s.isNotEmpty).last,
     commit: await _head(root),
-    labwright: labwright,
+    labwright: _labwrightRef(),
   );
-  final errors = records.where((r) => r.error != null).length;
+  try {
+    await _index(root, writer.add);
+    writer.finish();
+  } finally {
+    writer.close();
+  }
   stdout.writeln(
-    '${records.length} files indexed in ${watch.elapsed.inSeconds}s'
-    '${errors == 0 ? '' : ', $errors did not parse'}: '
+    '${writer.files} files indexed in ${watch.elapsed.inSeconds}s'
+    '${writer.errors == 0 ? '' : ', ${writer.errors} did not parse'}: '
     '${out.path} (${(out.lengthSync() / 1024 / 1024).toStringAsFixed(1)} MB)',
   );
 }
+
+/// How many files one worker isolate reads before it exits and hands its records back, which
+/// bounds the memory a worker holds.
+const int chunkSize = 128;
+
+/// How many worker isolates run at once.
+int get workers => (Platform.numberOfProcessors - 1).clamp(1, 8);
 
 const int schema = 1;
 
@@ -228,44 +237,43 @@ List<String> _files(Directory root) {
   return out..sort();
 }
 
-Future<List<Record>> _records(Directory root) async {
+/// Reads every corpus file under [root] on [workers] isolates, [chunkSize] files per isolate,
+/// and hands each record to [add] as its chunk finishes.
+Future<void> _index(Directory root, void Function(Record record) add) async {
   final paths = _files(root);
-  final n = (Platform.numberOfProcessors - 1).clamp(
-    1,
-    paths.isEmpty ? 1 : paths.length.clamp(1, 16),
-  );
-  final chunks = List.generate(n, (_) => <String>[]);
-  for (var i = 0; i < paths.length; i++) {
-    chunks[i % n].add(paths[i]);
+  final chunks = [
+    for (var i = 0; i < paths.length; i += chunkSize)
+      paths.sublist(i, (i + chunkSize).clamp(0, paths.length)),
+  ];
+  var next = 0;
+  Future<void> worker() async {
+    while (next < chunks.length) {
+      (await _readChunk(root.path, chunks[next++])).forEach(add);
+    }
   }
-  final rootPath = root.path;
-  final parts = await Future.wait([
-    for (final chunk in chunks)
-      if (chunk.isNotEmpty)
-        Isolate.run(
-          () => [
-            for (final path in chunk)
-              if (recordOf(path, File('$rootPath/$path').readAsBytesSync())
-                  case final record?)
-                record,
-          ],
-        ),
-  ]);
-  return [for (final part in parts) ...part]
-    ..sort((a, b) => a.path.compareTo(b.path));
+
+  await Future.wait([for (var i = 0; i < workers; i++) worker()]);
 }
 
-void _write(
-  File out,
-  List<Record> records, {
-  required String repository,
-  required String commit,
-  required String labwright,
-}) {
-  if (out.existsSync()) out.deleteSync();
-  final db = sqlite3.open(out.path);
-  try {
-    db.execute('''
+/// The records of [chunk], read on a fresh isolate that exits when done.
+Future<List<Record>> _readChunk(String root, List<String> chunk) => Isolate.run(
+  () => [
+    for (final path in chunk)
+      if (recordOf(path, File('$root/$path').readAsBytesSync())
+          case final record?)
+        record,
+  ],
+);
+
+/// Writes records into the database as they arrive; [finish] adds the names, indexes and meta.
+class _Writer {
+  _Writer(
+    File out, {
+    required this.repository,
+    required this.commit,
+    required this.labwright,
+  }) : _db = _open(out) {
+    _db.execute('''
       pragma journal_mode = off;
       pragma synchronous = off;
       create table meta(key text primary key, value text not null);
@@ -294,102 +302,112 @@ void _write(
       create table sub_vi(file integer not null references file(id), name text not null);
       create table library(file integer not null references file(id), name text not null);
       create table member(file integer not null references file(id), name text not null);
+      begin;
     ''');
-    final insertMeta = db.prepare('insert into meta values (?, ?)');
+    _file = _db.prepare(
+      'insert into file(id, path, source, bytes, type, name, version, error) values (?, ?, ?, ?, ?, ?, ?, ?)',
+    );
+    _prim = _db.prepare('insert into prim values (?, ?, ?)');
+    _bd = _db.prepare('insert into bd_object values (?, ?, ?)');
+    _fp = _db.prepare('insert into fp_object values (?, ?, ?)');
+    _subVi = _db.prepare('insert into sub_vi values (?, ?)');
+    _library = _db.prepare('insert into library values (?, ?)');
+    _member = _db.prepare('insert into member values (?, ?)');
+  }
+
+  static Database _open(File out) {
+    if (out.existsSync()) out.deleteSync();
+    return sqlite3.open(out.path);
+  }
+
+  final String repository;
+  final String commit;
+  final String labwright;
+
+  final Database _db;
+  late final PreparedStatement _file,
+      _prim,
+      _bd,
+      _fp,
+      _subVi,
+      _library,
+      _member;
+  final Set<int> _prims = {}, _bdClasses = {}, _fpClasses = {};
+
+  int files = 0;
+  int errors = 0;
+
+  void add(Record record) {
+    final id = ++files;
+    if (record.error != null) errors++;
+    _file.execute([
+      id,
+      record.path,
+      _sourceOf(record.path),
+      record.bytes,
+      record.type,
+      record.name,
+      record.version,
+      record.error,
+    ]);
+    for (final MapEntry(key: prim, value: n) in record.prims.entries) {
+      _prim.execute([id, prim, n]);
+      _prims.add(prim);
+    }
+    for (final MapEntry(key: code, value: n) in record.bdClasses.entries) {
+      _bd.execute([id, code, n]);
+      _bdClasses.add(code);
+    }
+    for (final MapEntry(key: code, value: n) in record.fpClasses.entries) {
+      _fp.execute([id, code, n]);
+      _fpClasses.add(code);
+    }
+    for (final name in record.subVis) {
+      _subVi.execute([id, name]);
+    }
+    for (final name in record.libraries) {
+      _library.execute([id, name]);
+    }
+    for (final name in record.members) {
+      _member.execute([id, name]);
+    }
+  }
+
+  void finish() {
+    final primName = _db.prepare('insert into prim_name values (?, ?)');
+    for (final prim in _prims) {
+      if (PrimOp.fromId(prim) case final op?)
+        primName.execute([prim, op.opName]);
+    }
+    primName.close();
+    final bdClass = _db.prepare('insert into bd_class values (?, ?)');
+    for (final code in _bdClasses) {
+      if (BdObjectClass.fromCode(code) case final cls
+          when cls != BdObjectClass.unknown)
+        bdClass.execute([code, cls.label]);
+    }
+    bdClass.close();
+    final fpClass = _db.prepare('insert into fp_class values (?, ?)');
+    for (final code in _fpClasses) {
+      if (FpObjectClass.fromCode(code) case final cls
+          when cls != FpObjectClass.unknown)
+        fpClass.execute([code, cls.label]);
+    }
+    fpClass.close();
+    final meta = _db.prepare('insert into meta values (?, ?)');
     for (final MapEntry(:key, :value) in {
       'schema': '$schema',
       'repository': repository,
       'commit': commit,
       'labwright': labwright,
       'built': DateTime.now().toUtc().toIso8601String(),
-      'files': '${records.length}',
+      'files': '$files',
     }.entries) {
-      insertMeta.execute([key, value]);
+      meta.execute([key, value]);
     }
-    final insertFile = db.prepare(
-      'insert into file(id, path, source, bytes, type, name, version, error) values (?, ?, ?, ?, ?, ?, ?, ?)',
-    );
-    final insertPrim = db.prepare('insert into prim values (?, ?, ?)');
-    final insertBd = db.prepare('insert into bd_object values (?, ?, ?)');
-    final insertFp = db.prepare('insert into fp_object values (?, ?, ?)');
-    final insertSubVi = db.prepare('insert into sub_vi values (?, ?)');
-    final insertLibrary = db.prepare('insert into library values (?, ?)');
-    final insertMember = db.prepare('insert into member values (?, ?)');
-    final prims = <int>{};
-    final bdClasses = <int>{};
-    final fpClasses = <int>{};
-    db.execute('begin');
-    for (var i = 0; i < records.length; i++) {
-      final record = records[i];
-      final id = i + 1;
-      insertFile.execute([
-        id,
-        record.path,
-        _sourceOf(record.path),
-        record.bytes,
-        record.type,
-        record.name,
-        record.version,
-        record.error,
-      ]);
-      for (final MapEntry(key: prim, value: n) in record.prims.entries) {
-        insertPrim.execute([id, prim, n]);
-        prims.add(prim);
-      }
-      for (final MapEntry(key: code, value: n) in record.bdClasses.entries) {
-        insertBd.execute([id, code, n]);
-        bdClasses.add(code);
-      }
-      for (final MapEntry(key: code, value: n) in record.fpClasses.entries) {
-        insertFp.execute([id, code, n]);
-        fpClasses.add(code);
-      }
-      for (final name in record.subVis) {
-        insertSubVi.execute([id, name]);
-      }
-      for (final name in record.libraries) {
-        insertLibrary.execute([id, name]);
-      }
-      for (final name in record.members) {
-        insertMember.execute([id, name]);
-      }
-    }
-    final insertPrimName = db.prepare('insert into prim_name values (?, ?)');
-    for (final prim in prims) {
-      if (PrimOp.fromId(prim) case final op?)
-        insertPrimName.execute([prim, op.opName]);
-    }
-    final insertBdClass = db.prepare('insert into bd_class values (?, ?)');
-    for (final code in bdClasses) {
-      if (BdObjectClass.fromCode(code) case final cls
-          when cls != BdObjectClass.unknown) {
-        insertBdClass.execute([code, cls.label]);
-      }
-    }
-    final insertFpClass = db.prepare('insert into fp_class values (?, ?)');
-    for (final code in fpClasses) {
-      if (FpObjectClass.fromCode(code) case final cls
-          when cls != FpObjectClass.unknown) {
-        insertFpClass.execute([code, cls.label]);
-      }
-    }
-    db.execute('commit');
-    for (final statement in [
-      insertMeta,
-      insertFile,
-      insertPrim,
-      insertBd,
-      insertFp,
-      insertSubVi,
-      insertLibrary,
-      insertMember,
-      insertPrimName,
-      insertBdClass,
-      insertFpClass,
-    ]) {
-      statement.close();
-    }
-    db.execute('''
+    meta.close();
+    _db.execute('''
+      commit;
       create index file_source on file(source);
       create index file_type on file(type);
       create index file_name on file(name collate nocase);
@@ -404,8 +422,21 @@ void _write(
       create index member_name on member(name collate nocase);
       vacuum;
     ''');
-  } finally {
-    db.close();
+  }
+
+  void close() {
+    for (final statement in [
+      _file,
+      _prim,
+      _bd,
+      _fp,
+      _subVi,
+      _library,
+      _member,
+    ]) {
+      statement.close();
+    }
+    _db.close();
   }
 }
 
