@@ -45,22 +45,20 @@ This collection is the sample corpus for [labwright](https://github.com/Bud-ro/l
 `dart run packages/labwright_rsrc_parse/tool/fetch_snippets.dart` there fetches
 it at a pinned commit.
 
+## Checks
+
+Every snippet `manifest.json` lists carries the id of the git blob that holds it, so the
+collection checks itself against its own tree: `dart tool/check.dart` reads `git ls-tree`
+and the manifests, and reports a listed PNG the tree lacks or holds as another blob, a PNG
+no manifest lists, and any field, URL or ordering that is off in `manifest.json`,
+`held.json` or `LICENSES.md`. It needs git and a Dart SDK and fetches nothing; the `check`
+workflow runs it on every push.
+
 ## Index
 
-`index.json` holds one record per snippet: the VI's name and saving version, the ids
-its heaps hold (`primResID`s, block-diagram and front-panel class codes, each with how
-many objects carry it) and its sub-VI names. The records store the raw ids, so the
-index does not change when a parser learns a name; labwright resolves them through
-its catalogues when it searches the corpus.
-
-The index and the rest of the metadata are checked on every push by the `check`
-workflow, which runs labwright's `tool/check_corpus.dart` over the collection:
-
-```
-tool/labwright.sh check_corpus          # check manifest.json, held.json, LICENSES.md and index.json
-tool/labwright.sh index_corpus          # rebuild index.json
-tool/labwright.sh index_corpus --check  # report whether index.json is missing or stale
-```
-
-`tool/labwright.sh` clones labwright into `.labwright` (ignored) at the `develop`
-branch, or uses the checkout `LABWRIGHT_DIR` names.
+The `index` workflow builds a SQLite index of the collection on every push to `master`
+and publishes it as the release `index-<commit>` (`index.sqlite.xz`): one row per
+snippet, with the VI's name and saving version, the `primResID`s and block-diagram and
+front-panel class codes its heaps hold (each with how many objects carry it and the name
+labwright's catalogues give it) and its sub-VI names. `tool/index`, a small Dart tool that depends on labwright's parser at the commit its
+`pubspec.yaml` pins, builds it; nothing derived from the images is committed here.

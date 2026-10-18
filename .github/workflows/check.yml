@@ -4,63 +4,24 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-    inputs:
-      all:
-        description: Check every source in full instead of the sources the push changed
-        type: boolean
-        default: false
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      # Blobless and sparse: the tree alone is enough to check what every source holds, and only
-      # the sources a push changed are checked out for their contents.
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           filter: blob:none
           sparse-checkout: |
             /*
             !/*/
             /tool/
+            /rosetta/manifest.json
+            /sources/*/manifest.json
           sparse-checkout-cone-mode: false
-
-      - name: check out the sources to check in full
-        shell: bash
-        run: |
-          if ! git ls-tree -d HEAD sources >/dev/null 2>&1 || [ -z "$(git ls-tree -d HEAD sources)" ]; then
-            echo "no sources/ directory: checking out everything"
-            git sparse-checkout disable
-            exit 0
-          fi
-          if [ "${{ inputs.all }}" = "true" ]; then
-            echo "checking out every source"
-            git sparse-checkout disable
-            exit 0
-          fi
-          base="${{ github.event.pull_request.base.sha || github.event.before }}"
-          if [ -z "$base" ] || ! git cat-file -e "$base" 2>/dev/null; then
-            base="origin/${{ github.event.repository.default_branch }}"
-          fi
-          changed=$(git diff --name-only "$base" "$GITHUB_SHA" -- sources | sed -nE 's#^(sources/[^/]+)/.*#/\1/#p' | sort -u)
-          if [ -z "$changed" ]; then
-            echo "no source changed since $base"
-            exit 0
-          fi
-          echo "checking out:"; echo "$changed"
-          git sparse-checkout add $changed
-
-      - uses: actions/checkout@v4
-        with:
-          repository: Bud-ro/labwright
-          ref: develop
-          path: .labwright
 
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
 
-      - name: check the metadata
-        shell: bash
-        run: LABWRIGHT_DIR="$GITHUB_WORKSPACE/.labwright" tool/labwright.sh check_corpus
+      - run: dart tool/check.dart

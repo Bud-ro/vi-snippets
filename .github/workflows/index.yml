@@ -1,0 +1,48 @@
+name: index
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+env:
+  GIT_LFS_SKIP_SMUDGE: 1
+
+permissions:
+  contents: write
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /*
+            !/*/
+          sparse-checkout-cone-mode: false
+
+      - name: check out every file with git's filters off
+        run: |
+          echo '* -text -eol -filter -diff -merge -crlf -ident' > .git/info/attributes
+          git sparse-checkout disable
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: build the index
+        working-directory: tool/index
+        run: |
+          dart pub get
+          dart run bin/index.dart "$GITHUB_WORKSPACE" "$RUNNER_TEMP/index.sqlite"
+          xz -9 -T0 "$RUNNER_TEMP/index.sqlite"
+
+      - name: release the index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="index-${GITHUB_SHA::12}"
+          gh release create "$tag" "$RUNNER_TEMP/index.sqlite.xz" \
+            --target "$GITHUB_SHA" --title "$tag" \
+            --notes "SQLite index of this repository at $GITHUB_SHA, built by tool/index."

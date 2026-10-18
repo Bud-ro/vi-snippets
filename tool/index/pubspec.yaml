@@ -1,0 +1,14 @@
+name: corpus_index
+description: Builds the SQLite index this corpus repository releases.
+publish_to: none
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  labwright_rsrc_parse:
+    git:
+      url: https://github.com/Bud-ro/labwright.git
+      ref: 9a268988f7c106fbe8630701048a2295572ca398
+      path: packages/labwright_rsrc_parse
+  sqlite3: ^3.3.1
