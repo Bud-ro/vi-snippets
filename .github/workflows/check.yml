@@ -23,6 +23,7 @@ jobs:
           sparse-checkout: |
             /*
             !/*/
+            /tool/
           sparse-checkout-cone-mode: false
 
       - name: check out the sources to check in full
