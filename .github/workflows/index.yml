@@ -35,7 +35,7 @@ jobs:
         working-directory: tool/index
         run: |
           dart pub get
-          dart run bin/index.dart "$GITHUB_WORKSPACE" "$RUNNER_TEMP/index.sqlite"
+          dart --old_gen_heap_size=2048 run bin/index.dart "$GITHUB_WORKSPACE" "$RUNNER_TEMP/index.sqlite"
           xz -9 -T0 "$RUNNER_TEMP/index.sqlite"
 
       - name: release the index
