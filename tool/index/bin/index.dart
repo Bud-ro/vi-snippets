@@ -411,9 +411,15 @@ class _Writer {
       create index file_source on file(source);
       create index file_type on file(type);
       create index file_name on file(name collate nocase);
+      create index prim_file on prim(file);
       create index prim_id on prim(id);
+      create index bd_object_file on bd_object(file);
       create index bd_object_code on bd_object(code);
+      create index fp_object_file on fp_object(file);
       create index fp_object_code on fp_object(code);
+      create index sub_vi_file on sub_vi(file);
+      create index library_file on library(file);
+      create index member_file on member(file);
       create index prim_name_name on prim_name(name collate nocase);
       create index bd_class_name on bd_class(name collate nocase);
       create index fp_class_name on fp_class(name collate nocase);
