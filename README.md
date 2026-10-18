@@ -33,6 +33,8 @@ Images saved under an evaluation or Home/Student edition of LabVIEW (the
 the VI inside records the edition in its save-record flags, and consumers that
 need an unwatermarked render reference filter on that.
 
+`index.json` lists what each snippet's VI holds; see [Index](#index).
+
 `held.json` lists snippet images that were found and verified but are not
 included because their source states no reuse license or forbids copying
 (NI knowledge-base articles without the reuse note, NI forum attachments, and
@@ -42,3 +44,23 @@ URL so the material can be revisited with permission.
 This collection is the sample corpus for [labwright](https://github.com/Bud-ro/labwright);
 `dart run packages/labwright_rsrc_parse/tool/fetch_snippets.dart` there fetches
 it at a pinned commit.
+
+## Index
+
+`index.json` holds one record per snippet: the VI's name and saving version, the ids
+its heaps hold (`primResID`s, block-diagram and front-panel class codes, each with how
+many objects carry it) and its sub-VI names. The records store the raw ids, so the
+index does not change when a parser learns a name; labwright resolves them through
+its catalogues when it searches the corpus.
+
+The index and the rest of the metadata are checked on every push by the `check`
+workflow, which runs labwright's `tool/check_corpus.dart` over the collection:
+
+```
+tool/labwright.sh check_corpus          # check manifest.json, held.json, LICENSES.md and index.json
+tool/labwright.sh index_corpus          # rebuild index.json
+tool/labwright.sh index_corpus --check  # report whether index.json is missing or stale
+```
+
+`tool/labwright.sh` clones labwright into `.labwright` (ignored) at the `develop`
+branch, or uses the checkout `LABWRIGHT_DIR` names.
