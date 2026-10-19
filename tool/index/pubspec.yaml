@@ -9,6 +9,6 @@ dependencies:
   labwright_rsrc_parse:
     git:
       url: https://github.com/Bud-ro/labwright.git
-      ref: 9a268988f7c106fbe8630701048a2295572ca398
+      ref: 055a065f71e15a83a3c2cfdb48938d769a683b29
       path: packages/labwright_rsrc_parse
   sqlite3: ^3.3.1
