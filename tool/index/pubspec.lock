@@ -77,8 +77,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/labwright_rsrc_parse"
-      ref: "9a268988f7c106fbe8630701048a2295572ca398"
-      resolved-ref: "9a268988f7c106fbe8630701048a2295572ca398"
+      ref: "055a065f71e15a83a3c2cfdb48938d769a683b29"
+      resolved-ref: "055a065f71e15a83a3c2cfdb48938d769a683b29"
       url: "https://github.com/Bud-ro/labwright.git"
     source: git
     version: "0.0.1"
